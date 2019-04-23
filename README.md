@@ -20,10 +20,16 @@ Muscheln und Schnecken des Museums für Naturkunde Berlin freistellen und neue B
   - Install Qt
   - Clone it
   - Initialize submodules (if SmtpClient or JCVoronoi fail to build, you're missing this)
+    - `git submodule update --init --recursive`
   - Run CMake
+    - `mkdir build`
+    - `cd build`
+    - `cmake ..`
   - Build it
-  - Place the data folder (containing the snail images, the meta file and the optional descriptions) next to the built executable
+    - `make`
+  - Place the data folder (containing the snail images, the meta file and the optional descriptions) next to the built executable    
   - Run it
+    - `./bin/SnailSnap -n 7500 -d path/to/cutouts_and_metafile`
   - If it doesn't work for some reason, check these steps again, and if it still doesn't work create an issue where you tell [Lukas](https://github.com/lukaswagner) to improve the readme.
 
 ## Command Line Arguments
