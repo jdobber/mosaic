@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=bash -c "cd ~/spielwiese/mosaic/build/bin/ && ./SnailSnap -n 7500 -d ~/data/cutouts_small/ -c true"
+Name=SnailSnap
+Comment=SnailSnap
+Icon=~/spielwiese/mosaic/build/bin/resources/camera.png
