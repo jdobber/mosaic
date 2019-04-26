@@ -74,7 +74,7 @@ void Sidebar::updateContent(
     m_familyLabel->setText("<b>Familie:</b> " + familyContent);
     m_genusLabel->setText("<b>Geschlecht:</b> " + genusContent);
     m_speciesLabel->setText("<b>Spezies:</b> " + speciesContent);
-    m_scientificNameLabel->setText("<b>Wissenschaftlicher Name</b> " + scientificNameContent);
+    m_scientificNameLabel->setText("<b>Wissenschaftlicher Name:</b> " + scientificNameContent);
     m_localityLabel->setText("<b>Fundort:</b> " + localityContent);
     m_dateLabel->setText("<b>Datum:</b> " + dateContent);
     m_areaLabel->setText("<b>Gebiet:</b> " + areaContent);

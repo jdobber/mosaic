@@ -277,11 +277,8 @@ void MainWindow::countdownChange() {
 void MainWindow::diaChange() {
     switch (m_dia)    
     {
-        case 0:
-            this->processAndShowPicture(std::make_shared<QImage>("resources/dia1.png"));            
-            break;
         case 1:
-            this->processAndShowPicture(std::make_shared<QImage>("resources/dia2.png"));
+            this->showPicture(std::make_shared<QImage>("resources/dia2.png"));
             break;            
         case 2:
             this->showPicture(std::make_shared<QImage>("resources/credits.png"));
