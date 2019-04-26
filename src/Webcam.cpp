@@ -16,7 +16,7 @@ Webcam::Webcam() {
     cams = QCameraInfo::availableCameras();
 
     if (!cams.count())
-        return;
+       return;
 
     cam = std::make_shared<QCamera>(cams[0]);
 

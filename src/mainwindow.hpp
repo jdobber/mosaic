@@ -55,7 +55,7 @@ private:
     bool m_imageCaptureInProgress = false;
     int m_countdown = -1;
     bool m_useCam;
-    bool m_dia1;
+    int m_dia = 0;
     int m_maxNumOfMolluscs;
     std::shared_ptr<QImage> m_result;
     std::shared_ptr<QImage> m_idImage;
@@ -91,6 +91,7 @@ private:
     void initButton(QPushButton* button, std::string icon, int row, int column, bool visible = true);
     void initButtons();
     void processAndShowPicture(std::shared_ptr<QImage> image);
+    void showPicture(std::shared_ptr<QImage> image);
     void initializeSidebar();
 
 public slots:

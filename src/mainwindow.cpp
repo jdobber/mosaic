@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent, bool useCam, QString outputPath,
     , m_view(new MolluscView(this))
     , m_diaTimer(new QTimer(this))
     , m_countdownTimer(new QTimer(this))
-    , m_dia1(true)
+    , m_dia(0)
     , m_scene(new QGraphicsScene(m_view))
     , m_mainLayout(new QGridLayout(m_view))
     , m_cameraButton(new QPushButton(this))
@@ -202,8 +202,8 @@ void MainWindow::initButtons() {
     initButton(m_backButton, "back.png", 0, 0, false);
     connect(m_backButton, SIGNAL(released()), this, SLOT(showDia()));
 
-    initButton(m_shareButton, "share.png", 2, 2, false);
-    connect(m_shareButton, SIGNAL(released()), this, SLOT(shareButtonClick()));
+    //initButton(m_shareButton, "share.png", 2, 2, false);
+    //connect(m_shareButton, SIGNAL(released()), this, SLOT(shareButtonClick()));
 
     initButton(m_cameraButton, "camera.png", 3, 2);
     connect(m_cameraButton, SIGNAL(released()), this, SLOT(takeSelfie()));
@@ -275,14 +275,26 @@ void MainWindow::countdownChange() {
 }
 
 void MainWindow::diaChange() {
-    if (m_dia1) {
-        m_dia1 = !m_dia1;
-        this->processAndShowPicture(std::make_shared<QImage>("resources/dia1.png"));
+    switch (m_dia)    
+    {
+        case 0:
+            this->processAndShowPicture(std::make_shared<QImage>("resources/dia1.png"));            
+            break;
+        case 1:
+            this->processAndShowPicture(std::make_shared<QImage>("resources/dia2.png"));
+            break;            
+        case 2:
+            this->showPicture(std::make_shared<QImage>("resources/credits.png"));
+            break;        
+        case 3:
+            this->showPicture(std::make_shared<QImage>("resources/checkout.png"));
+            break;        
+        default:
+            m_dia = 0;
+            this->processAndShowPicture(std::make_shared<QImage>("resources/dia1.png"));
+            break;
     }
-    else {
-        m_dia1 = !m_dia1;
-        this->processAndShowPicture(std::make_shared<QImage>("resources/dia2.png"));
-    }
+    m_dia++;
     m_backButton->setVisible(false);
     m_shareButton->setVisible(false);
     m_imageCaptureInProgress = false;
@@ -338,6 +350,27 @@ void MainWindow::processAndShowPicture(std::shared_ptr<QImage> inputImage) {
 
     m_resultLabel->setFixedSize(display.width(), display.height());
     m_resultLabel->setPixmap(QPixmap::fromImage(*m_result));
+
+    m_imageCaptureInProgress = false;
+}
+
+void MainWindow::showPicture(std::shared_ptr<QImage> inputImage) {
+    std::cout << "Showing image..." << std::endl;
+
+    m_countdownLabel->setVisible(false);
+    m_sidebar->setVisible(false);
+    // scale image to screen size
+    auto display = QApplication::desktop()->screenGeometry();
+    auto scaledImage = inputImage->scaled(display.size(), Qt::KeepAspectRatioByExpanding);
+    auto image = scaledImage.copy((scaledImage.width() - display.width()) / 2, (scaledImage.height() - display.height()) / 2, display.width(), display.height());
+    
+    // process image
+    //m_result = std::make_unique<QImage>(image.width(), image.height(), QImage::Format::Format_RGB32);
+    //m_idImage = std::make_unique<QImage>(image.width(), image.height(), QImage::Format::Format_RGB32);
+    //m_molluscs = m_painter.paint(m_mosaic.createMosaic(image, m_maxNumOfMolluscs), *m_result, *m_idImage);
+
+    m_resultLabel->setFixedSize(display.width(), display.height());
+    m_resultLabel->setPixmap(QPixmap::fromImage(image));
 
     m_imageCaptureInProgress = false;
 }

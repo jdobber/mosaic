@@ -74,7 +74,7 @@ void Sidebar::updateContent(
     m_familyLabel->setText("<b>Familie:</b> " + familyContent);
     m_genusLabel->setText("<b>Geschlecht:</b> " + genusContent);
     m_speciesLabel->setText("<b>Spezies:</b> " + speciesContent);
-    m_scientificNameLabel->setText("<b>Wiss. Begr.:</b> " + scientificNameContent);
+    m_scientificNameLabel->setText("<b>Wissenschaftlicher Name</b> " + scientificNameContent);
     m_localityLabel->setText("<b>Fundort:</b> " + localityContent);
     m_dateLabel->setText("<b>Datum:</b> " + dateContent);
     m_areaLabel->setText("<b>Gebiet:</b> " + areaContent);
@@ -82,7 +82,7 @@ void Sidebar::updateContent(
     m_countryLabel->setText("<b>Land:</b> " + countryContent);
     m_subContinentLabel->setText("<b>Teilkontinent:</b> " + subContinentContent);
     m_continentLabel->setText("<b>Kontinent:</b> " + continentContent);
-    m_descriptionLabel->setText("<b>Zusätzliche Informationen:</b> " + descriptionContent);
+    //m_descriptionLabel->setText("<b>Zus&auml;tzliche Informationen:</b> " + descriptionContent);
 
     m_image1Label->setPixmap(QPixmap::fromImage(image1));
     m_image2Label->setPixmap(QPixmap::fromImage(image2));
