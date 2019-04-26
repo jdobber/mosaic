@@ -65,11 +65,13 @@ MainWindow::MainWindow(QWidget *parent, bool useCam, QString outputPath,
     m_countdownLabel->setFont(font);
     m_countdownLabel->setStyleSheet("QLabel { background-color : black; color : white; font}");
     m_mainLayout->addWidget(m_countdownLabel, 0, 0, 4, 3, Qt::AlignCenter);
-
+     
     this->initButtons();
     this->showDia();
 
     initializeSidebar();
+
+    QTimer::singleShot(0, this, SLOT(showFullScreen()));
 }
 
 MainWindow::~MainWindow() = default;
@@ -302,6 +304,7 @@ void MainWindow::showDia()
 {
     m_imageCaptureInProgress = true;
     m_diaTimer->start(0);
+    m_dia = 0;
 }
 
 void MainWindow::stopDia()
@@ -373,5 +376,4 @@ void MainWindow::showPicture(std::shared_ptr<QImage> inputImage) {
 }
 
 void MainWindow::initializeSidebar() {
-
 }
