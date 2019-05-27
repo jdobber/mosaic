@@ -207,7 +207,7 @@ void MainWindow::initButtons() {
     //initButton(m_shareButton, "share.png", 2, 2, false);
     //connect(m_shareButton, SIGNAL(released()), this, SLOT(shareButtonClick()));
 
-    initButton(m_cameraButton, "camera.png", 3, 2);
+    initButton(m_cameraButton, "camera.png", 3, 0);
     connect(m_cameraButton, SIGNAL(released()), this, SLOT(takeSelfie()));
 }
 
